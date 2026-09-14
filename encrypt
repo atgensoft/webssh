@@ -1,0 +1,16 @@
+import sys
+from cryptography.fernet import Fernet
+
+secret_key = b'ZmDfcTF7_60GrrY167zsiPd67pEvs0aGOv2oasOM1Pg='
+cipher_suite = Fernet(secret_key)
+
+# The username you want to protect
+print(f"User Name: {sys.argv[1]}")
+raw_username = sys.argv[1]
+
+# Step 2: Encrypt the username
+# The string must be encoded to bytes before encryption
+encrypted_bytes = cipher_suite.encrypt(raw_username.encode('utf-8'))
+encrypted_username_str = encrypted_bytes.decode('utf-8')
+
+print(f"Encrypted Username Token: {encrypted_username_str}")
