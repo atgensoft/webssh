@@ -117,7 +117,7 @@ URL Arguments
 Support passing arguments by url (query or fragment) like following
 examples:
 
-Passing form data (password must be encoded in base64, privatekey not
+Passing form data (password must be encoded in base64, username can be encoded with 'python3 encrypt SSH_USERNAME', privatekey not
 supported)
 
 .. code:: bash
