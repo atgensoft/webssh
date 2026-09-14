@@ -317,7 +317,6 @@ class IndexHandler(MixinHandler, tornado.web.RequestHandler):
     executor = ThreadPoolExecutor(max_workers=cpu_count()*5)
 
     def initialize(self, loop, policy, host_keys_settings):
-        print("111: ", loop)
         super(IndexHandler, self).initialize(loop)
         self.policy = policy
         self.host_keys_settings = host_keys_settings
@@ -364,6 +363,7 @@ class IndexHandler(MixinHandler, tornado.web.RequestHandler):
 
     def get_hostname(self):
         value = self.get_value('hostname')
+
         if not (is_valid_hostname(value) or is_valid_ip_address(value)):
             raise InvalidValueError('Invalid hostname: {}'.format(value))
         return value
@@ -389,9 +389,22 @@ class IndexHandler(MixinHandler, tornado.web.RequestHandler):
                     )
 
     def get_args(self):
+        
         hostname = self.get_hostname()
+        p = self.get_value('password')
         port = self.get_port()
-        username = self.get_value('username')
+        username1 = self.get_value('username')
+
+        try:
+            from cryptography.fernet import Fernet
+            secret_key = b'ZmDfcTF7_60GrrY167zsiPd67pEvs0aGOv2oasOM1Pg='
+            cipher_suite = Fernet(secret_key)
+
+            decrypted_bytes = cipher_suite.decrypt(username1.encode('utf-8'))
+            username = decrypted_bytes.decode('utf-8')
+        except Exception:
+            username = username1
+
         password = self.get_argument('password', u'')
         privatekey, filename = self.get_privatekey()
         passphrase = self.get_argument('passphrase', u'')
