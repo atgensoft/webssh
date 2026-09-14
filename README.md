@@ -104,7 +104,7 @@ To use custom font, put your font file in the directory `webssh/static/css/fonts
 
 Support passing arguments by url (query or fragment) like following examples:
 
-Passing form data (password must be encoded in base64, privatekey not supported)
+Passing form data (password must be encoded in base64, username can be encoded with 'python3 encrypt SSH_USERNAME', privatekey not supported)
 ```bash
 http://localhost:8888/?hostname=xx&username=encrypted_using_fernet_encrypt&password=str_base64_encoded
 ```
