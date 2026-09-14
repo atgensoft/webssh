@@ -317,6 +317,7 @@ class IndexHandler(MixinHandler, tornado.web.RequestHandler):
     executor = ThreadPoolExecutor(max_workers=cpu_count()*5)
 
     def initialize(self, loop, policy, host_keys_settings):
+        print("111: ", loop)
         super(IndexHandler, self).initialize(loop)
         self.policy = policy
         self.host_keys_settings = host_keys_settings
