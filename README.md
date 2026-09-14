@@ -1,11 +1,5 @@
 ## WebSSH
 
-[![python](https://github.com/huashengdun/webssh/actions/workflows/python.yml/badge.svg)](https://github.com/huashengdun/webssh/actions/workflows/python.yml)
-[![codecov](https://raw.githubusercontent.com/huashengdun/webssh/coverage-badge/coverage.svg)](https://raw.githubusercontent.com/huashengdun/webssh/coverage-badge/coverage.svg)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/webssh.svg)
-![PyPI](https://img.shields.io/pypi/v/webssh.svg)
-
-
 ### Introduction
 
 A simple web application to be used as an ssh client to connect to your ssh servers. It is written in Python, base on tornado, paramiko and xterm.js.
@@ -13,6 +7,7 @@ A simple web application to be used as an ssh client to connect to your ssh serv
 ### Features
 
 * SSH password authentication supported, including empty password.
+* Encrypted SSH UserName and Password supported.
 * SSH public-key authentication supported, including DSA RSA ECDSA Ed25519 keys.
 * Encrypted keys supported.
 * Two-Factor Authentication (time-based one-time password) supported.
@@ -111,7 +106,7 @@ Support passing arguments by url (query or fragment) like following examples:
 
 Passing form data (password must be encoded in base64, privatekey not supported)
 ```bash
-http://localhost:8888/?hostname=xx&username=yy&password=str_base64_encoded
+http://localhost:8888/?hostname=xx&username=encrypted_using_fernet_encrypt&password=str_base64_encoded
 ```
 
 Passing a terminal background color
@@ -147,35 +142,6 @@ http://localhost:8888/?command=pwd
 Passing a terminal type
 ```bash
 http://localhost:8888/?term=xterm-256color
-```
-
-### Use Docker
-
-Start up the app
-```
-docker-compose up
-```
-
-Tear down the app
-```
-docker-compose down
-```
-
-### Tests
-
-Requirements
-```
-pip install pytest pytest-cov codecov flake8 mock
-```
-
-Use unittest to run all tests
-```
-python -m unittest discover tests
-```
-
-Use pytest to run all tests
-```
-python -m pytest tests
 ```
 
 ### Deployment
