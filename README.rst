@@ -1,8 +1,6 @@
 WebSSH
 ------
 
-|Build Status| |codecov| |PyPI - Python Version| |PyPI|
-
 Introduction
 ~~~~~~~~~~~~
 
@@ -14,6 +12,7 @@ Features
 ~~~~~~~~
 
 -  SSH password authentication supported, including empty password.
+-  SSH with Encrypted Username and Password supported. 
 -  SSH public-key authentication supported, including DSA RSA ECDSA
    Ed25519 keys.
 -  Encrypted keys supported.
@@ -123,7 +122,7 @@ supported)
 
 .. code:: bash
 
-    http://localhost:8888/?hostname=xx&username=yy&password=str_base64_encoded
+    http://localhost:8888/?hostname=xx&username=encrypted_username_with_fernet_encrypt&password=str_base64_encoded
 
 Passing a terminal background color
 
@@ -154,42 +153,6 @@ Passing a terminal type
 .. code:: bash
 
     http://localhost:8888/?term=xterm-256color
-
-Use Docker
-~~~~~~~~~~
-
-Start up the app
-
-::
-
-    docker-compose up
-
-Tear down the app
-
-::
-
-    docker-compose down
-
-Tests
-~~~~~
-
-Requirements
-
-::
-
-    pip install pytest pytest-cov codecov flake8 mock
-
-Use unittest to run all tests
-
-::
-
-    python -m unittest discover tests
-
-Use pytest to run all tests
-
-::
-
-    python -m pytest tests
 
 Deployment
 ~~~~~~~~~~
@@ -234,13 +197,3 @@ Tips
    file("~/.ssh/known\_hosts") and the application host keys
    file("./known\_hosts") in order, if the ssh server's hostname is not
    found or the key is not matched, the connection will be aborted.
-
-.. |Build Status| image:: https://travis-ci.org/huashengdun/webssh.svg?branch=master
-   :target: https://travis-ci.org/huashengdun/webssh
-.. |codecov| image:: https://codecov.io/gh/huashengdun/webssh/branch/master/graph/badge.svg
-   :target: https://codecov.io/gh/huashengdun/webssh
-.. |PyPI - Python Version| image:: https://img.shields.io/pypi/pyversions/webssh.svg
-.. |PyPI| image:: https://img.shields.io/pypi/v/webssh.svg
-.. |Login| image:: https://github.com/huashengdun/webssh/raw/master/preview/login.png
-.. |Terminal| image:: https://github.com/huashengdun/webssh/raw/master/preview/terminal.png
-
