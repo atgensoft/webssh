@@ -12,9 +12,9 @@ setup(
     version=version,
     description='Web based ssh client',
     long_description=long_description,
-    author='Shengdun Hua',
-    author_email='webmaster0115@gmail.com',
-    url='https://github.com/huashengdun/webssh',
+    authors='Shengdun Hua,Sagar Mehta',
+    author_email='atgensoft@gmail.com',
+    url='https://github.com/atgensoft/webssh',
     packages=['webssh'],
     entry_points='''
     [console_scripts]
@@ -32,5 +32,6 @@ setup(
     install_requires=[
         'tornado>=4.5.0',
         'paramiko>=2.3.1',
+        'cryptography>=50.0.1',
     ],
 )
