@@ -45,7 +45,7 @@ Requirements
 Quickstart
 ~~~~~~~~~~
 
-1. Install this app, run command ``pip install webssh``
+1. Install this app, run command ``pip install git+https://github.com/atgensoft/webssh``
 2. Start a webserver, run command ``wssh``
 3. Open your browser, navigate to ``127.0.0.1:8888``
 4. Input your data, submit the form.
